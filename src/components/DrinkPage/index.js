@@ -9,6 +9,8 @@ import {
 
 import {getDrink} from '../../api/drinks'
 import Loader from '../../common/components/Loader'
+import BackButton from './BackButton'
+
 
 import commonStyles from '../../common/styles'
 
@@ -59,14 +61,19 @@ class DrinkPage extends React.Component {
 
   render() {
     const {title, thumb, instructions, ingridients, isLoading} = this.state;
+    const {navigation} = this.props;
     
     if(isLoading) return <Loader />
     
     return (
-      <View style={[commonStyles.container, {paddingHorizontal: 20}]}>
+      <View style={[commonStyles.container, styles.container]}>
         
         <View style={commonStyles.header}>
+          <BackButton navigation={navigation}/>
+
           <Text style={commonStyles.headerText}>{title}</Text>
+
+          <Text style={commonStyles.headerBtn}></Text>
         </View>
 
         <View style={styles.drinkCard}>
@@ -97,30 +104,34 @@ class DrinkPage extends React.Component {
 export default DrinkPage;
 
 const styles = StyleSheet.create({
+
+  container: {
+    paddingHorizontal: 20
+  },
   
-    drinkCard: {
-      backgroundColor: '#fff',
-      borderRadius: 8,
-      padding: 10
-    },
+  drinkCard: {
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    padding: 10
+  },
 
-    thumb: {
-      height: 200,
-      marginBottom: 20
-    },
+  thumb: {
+    height: 200,
+    marginBottom: 20
+  },
 
-    ingridientsContainer: {
-      marginBottom: 20,
-    },
+  ingridientsContainer: {
+    marginBottom: 20,
+  },
 
-    titleText: {
-      fontSize: 16,
-      marginBottom: 5
-    },
+  titleText: {
+    fontSize: 16,
+    marginBottom: 5
+  },
 
-    listText: {
-      paddingLeft: 5,
-      marginBottom: 5
-    }
-  
-  });
+  listText: {
+    paddingLeft: 5,
+    marginBottom: 5
+  }
+
+});

@@ -10,12 +10,21 @@ const styles = StyleSheet.create({
   },
 
   header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     marginVertical: 15
   },
 
   headerText: {
     color: '#fff',
+    flex: 1,
+    textAlign: 'center',
     fontSize: 18
+  },
+
+  headerBtn: {
+    width: 25
   }
 
 });

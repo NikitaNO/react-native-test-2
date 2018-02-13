@@ -8,7 +8,10 @@ import {
 } from 'react-native'
 
 import DrinkPreview from './DrinkPreview'
+import Loader from '../../common/components/Loader'
 import { getDrinksList } from '../../api/drinks';
+
+import commonStyles from '../../common/styles'
 
 class HomePage extends React.Component {
 
@@ -34,19 +37,13 @@ class HomePage extends React.Component {
     const {drinks} = this.state;
     const {navigation} = this.props;
 
-    if(!drinks.length) {
-      return ( 
-        <View style={styles.loaderContainer}>
-          <ActivityIndicator size="large"/>
-        </View>
-      );
-    }
+    if(!drinks.length) return <Loader />
 
     return (
-      <View style={styles.container}>
+      <View style={commonStyles.container}>
 
-        <View style={styles.header}>
-          <Text style={styles.headerText}>Random drinks 0.1</Text>
+        <View style={commonStyles.header}>
+          <Text style={commonStyles.headerText}>Random drinks 0.1</Text>
         </View>
 
         <FlatList 
@@ -64,31 +61,9 @@ export default HomePage;
 
 const styles = StyleSheet.create({
 
-  loaderContainer: {
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center'    
-  },
-
-  container: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#2bedff',
-    alignItems: 'center'
-  },
-
   scrollContainer: {
     width: '100%',
     paddingHorizontal: 20
   },
-
-  header: {
-    marginVertical: 15
-  },
-
-  headerText: {
-    color: '#fff',
-    fontSize: 18
-  }
 
 });

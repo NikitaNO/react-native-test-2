@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'
+import {StyleSheet, Platform} from 'react-native'
 
 const styles = StyleSheet.create({
 
@@ -14,7 +14,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 15,
-    marginHorizontal: 10
+    marginHorizontal: 10,
+
+    ...Platform.select({
+        ios: {
+            marginTop: 30
+	}
+    })
   },
 
   headerText: {

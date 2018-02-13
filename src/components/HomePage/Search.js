@@ -10,25 +10,20 @@ import {PropTypes} from 'prop-types'
 import commonStyles from '../../common/styles'
 
 
-class DrinkPreview extends React.Component {
-
-  goBack = () => {
-    const {goBack} = this.props.navigation;
-    
-    goBack();
-  }
+class Search extends React.Component {
 
   render() {
-    const backIcon = require('../../assets/left-arrow.png');
+    const {clickHandler} = this.props;
+    const searchIcon = require('../../assets/search.png');
 
     return (
       <TouchableWithoutFeedback
         style={[commonStyles.headerBtn, styles.headerBtn]}
-        onPress={this.goBack}>
+        onPress={clickHandler}>
 
         <Image 
-          style={styles.backImage}
-          source={backIcon}/>
+          style={styles.searchImage}
+          source={searchIcon}/>
 
 
       </TouchableWithoutFeedback>
@@ -36,19 +31,19 @@ class DrinkPreview extends React.Component {
   }
 };
 
-DrinkPreview.propTypes = {
-  navigation: PropTypes.object.isRequired
+Search.propTypes = {
+  clickHandler: PropTypes.func.isRequired
 };
 
-export default DrinkPreview;
+export default Search;
 
 const styles = StyleSheet.create({
 
   headerBtn: {
-    padding: 10
+    padding: 10,
   },
 
-  backImage: {
+  searchImage: {
     width: 25,
     height: 25
   }
